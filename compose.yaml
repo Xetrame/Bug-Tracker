@@ -1,0 +1,15 @@
+services:
+  api:
+    image: nicolascauchois/fisa3-techno-web-api-tp:1.0.0
+    ports:
+      - "8080:80"
+
+  front:
+    build:
+      context: .
+      args:
+        VITE_API_URL: http://localhost:8080/api
+    ports:
+      - "8081:80"
+    depends_on:
+      - api
